@@ -37,8 +37,8 @@ services:
     networks:
       - front-tier
     depends_on:
-        - app
-        # - web
+        # - app
+        - node
     ports:
       - "6969:6969"
   app:
@@ -59,6 +59,20 @@ services:
     networks:
       # - front-tier
       - back-tier
+  node:
+    build: ./templates
+    container_name: "angular-app"
+    # build:
+    #   dckerfile: ./templates/Dockerfile
+    ports:
+      - "4200:4200"
+    # volumes:
+    #   - "./templates/my-app:/projects"
+    # tty: true
+    # restart: always
+    # networks:
+    #   - back-tier
+
 
 volumes:
   db-data:

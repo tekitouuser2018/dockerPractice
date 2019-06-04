@@ -11,3 +11,5 @@ ENV GOPATH $HOME/go
 
 RUN go get -u github.com/go-sql-driver/mysql
 
+
+

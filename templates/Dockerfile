@@ -1,0 +1,26 @@
+FROM node:10.9.0-stretch
+
+EXPOSE 4200
+
+WORKDIR $HOME/templates/my-app
+COPY ./my-app/package*.json $HOME/templates/my-app/
+# ADD . ./my-app
+
+# CMD ["ng", "serve", "--host", "0.0.0.0"]
+
+RUN npm install -g @angular/cli 
+# RUN npm install -g @angular/cli && ng config -g cli.packageManager yarn
+# RUN npm install -g angular-cli
+COPY ./my-app/ $HOME/templates/my-app/
+ARG configuration=production
+
+# RUN ng build
+RUN npm run build -- --output-path=./dist/out --configuration $configuration
+RUN ng serve --host 0.0.0.0
+# RUN ng serve --host=0.0.0.0
+# RUN npm run build --prod
+
+FROM nginx:latest
+COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
+# Copy the default nginx.conf provided by tiangolo/node-frontend
+COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
