@@ -66,8 +66,8 @@ services:
     #   dckerfile: ./templates/Dockerfile
     ports:
       - "4200:4200"
-    # volumes:
-    #   - "./templates/my-app:/projects"
+    volumes:
+      - "./templates/my-app:/templates/my-app"
     # tty: true
     # restart: always
     # networks:

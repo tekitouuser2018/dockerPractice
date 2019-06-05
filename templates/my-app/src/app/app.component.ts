@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { MatTableModule } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+  contentsHeader =[
+    'id',
+    'name',
+  ];
+  contents =[
+    {id:'1',name:'firstBrits'},
+    {id:'2',name:'econdMan'},
+    {id:'3',name:'3rd'},
+  ];
+
 }

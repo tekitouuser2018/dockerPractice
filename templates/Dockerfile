@@ -8,7 +8,11 @@ COPY ./my-app/package*.json $HOME/templates/my-app/
 
 # CMD ["ng", "serve", "--host", "0.0.0.0"]
 
+RUN npm install -g typescript@3.4.5
+RUN npm i typescript@3.4.5
 RUN npm install -g @angular/cli 
+RUN npm install --save @angular/material @angular/cdk
+RUN npm install --save @angular/animations
 # RUN npm install -g @angular/cli && ng config -g cli.packageManager yarn
 # RUN npm install -g angular-cli
 COPY ./my-app/ $HOME/templates/my-app/
