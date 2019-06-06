@@ -8,8 +8,8 @@ FLUSH PRIVILEGES;
 CREATE TABLE `users` (
     `id` INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(20) not null,
-    createed_time datetime not null default current_timestamp,
-    updated_tiem datetime not null default current_timestamp on update current_timestamp
+    created_time datetime not null default current_timestamp,
+    updated_time datetime not null default current_timestamp on update current_timestamp
 );
 
 

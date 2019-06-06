@@ -1,7 +1,7 @@
 FROM golang:latest
 
 WORKDIR $HOME/go
-ADD . $HOME/go
+# ADD . $HOME/go
 
 CMD ["go", "run", "main.go"]
 

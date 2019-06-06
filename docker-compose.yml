@@ -43,8 +43,9 @@ services:
       - "6969:6969"
   app:
     build: .
-    # links:
-    #   - mysql:mysql
+    container_name: goApp
+    volumes:
+      - .:/go
     depends_on:
         - mysql
     ports:

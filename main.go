@@ -2,8 +2,10 @@ package main
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
@@ -11,6 +13,13 @@ import (
 	"gopkg.in/gorp.v1"
 	_ "gopkg.in/gorp.v1"
 )
+
+type User struct {
+	Id           int    `json:"id"`
+	Name         string `json:"name"`
+	Created_time string `json:"created_time"`
+	Updated_time string `json:"updated_time"`
+}
 
 // type templateHandler struct {
 // 	once     sync.Once
@@ -51,6 +60,7 @@ func main() {
 
 func getUsers(c *gin.Context) {
 	var err error = nil
+	var response []User
 	defer func() {
 		picnic := recover()
 		if picnic != nil {
@@ -65,43 +75,66 @@ func getUsers(c *gin.Context) {
 			})
 		} else {
 			c.JSON(200, gin.H{
-				"Test connection": "正常レスポンス",
+				"Test Get Table Data": response,
 			})
 		}
 	}()
 
-	// dbMap := getDbmap()
-	// defer dbClose(dbMap)
+	dbMap := getDbmap()
+	defer dbClose(dbMap)
 
-	// tBefore := time.Now()
-	// log.Println("開始時間 : ", tBefore)
+	tBefore := time.Now()
+	log.Println("開始時間 : ", tBefore)
 
 	// テーブルアクセス処理
+	response = getUserData(dbMap)
+	if response == nil {
+		err = errors.New(fmt.Sprintf("Error: %s", "Cannot get Users Data!!!"))
+	}
 
-	// log.Println("終了時間 : ", time.Now())
-	// log.Println("TIME : ", time.Since(tBefore))
+	log.Println("終了時間 : ", time.Now())
+	log.Println("TIME : ", time.Since(tBefore))
 
 }
 
 func getDbmap() *gorp.DbMap {
-	userName := "miraka-est"
-	pass := "miraca-est@2019"
-	connectionName := "miraca-estimate-dev:asia-northeast1:kame-evo-db"
+	userName := "root"
+	pass := "password"
+	connectionName := "docker.for.mac.localhost:3306"
+	dbName := "test_db"
 	var db *sql.DB
-	dbURI := fmt.Sprintf("%s:%s@unix(/cloudsql/%s)/backend_ys", userName, pass, connectionName)
+	dbURI := fmt.Sprintf("%s:%s@tcp(%s)/%s", userName, pass, connectionName, dbName)
 	db, err := sql.Open("mysql", dbURI)
 	if err != nil {
 		log.Println(err)
 		log.Println("==== SQL Open error occurred")
 	}
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
-	// dbmap.AddTableWithName(TrialDetail{}, "est_trial_detail").SetKeys(false, "Company_code")
+	dbmap.AddTableWithName(User{}, "users").SetKeys(false, "Id")
 
 	return dbmap
 }
 
 func dbClose(dbmap *gorp.DbMap) {
 	dbmap.Db.Close()
+}
+
+func getUserData(dbMap *gorp.DbMap) []User {
+	buf := make([]byte, 0, 200)
+	q := "select * from users"
+	buf = append(buf, q...)
+	// rows, err := dbMap.Exec(string(buf))
+	// defer rows.Close()
+	ret := []User{}
+	_, err := dbMap.Select(&ret, "select * from users")
+	if err != nil {
+		log.Println("===error : ", err)
+		log.Println("====== Select from users error occurred")
+		return nil
+	}
+
+	return ret
+
 }
 
 // func my(w http.ResponseWriter, r *http.Request) {
