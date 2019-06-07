@@ -34,10 +34,10 @@ services:
     volumes:
       - ./myproxy/conf/proxy.conf:/etc/nginx/conf.d/proxy.conf
       # - ./templates:/var/www/templates
-    networks:
-      - front-tier
+    # networks:
+    #   - front-tier
     depends_on:
-        # - app
+        - app
         - node
     ports:
       - "6969:6969"
@@ -50,25 +50,30 @@ services:
         - mysql
     ports:
       - "8080:8080"
-    restart: always
+    # restart: always
     environment:
         MYSQL_DB_HOST: mysql
         MYSQL_DB: test_db
         MYSQL_PORT: 3306
         MYSQL_USER: subuser
         MYSQL_PASSWORD: password2
-    networks:
-      # - front-tier
-      - back-tier
+        # VIRTUAL_HOST: "127.0.0.1"
+        # LETSENCRYPT_HOST: "127.0.0.1"
+        # CORS_MAX_AGE: 500
+    # networks:
+    #   # - front-tier
+    #   - back-tier
   node:
     build: ./templates
     container_name: "angular-app"
     # build:
     #   dckerfile: ./templates/Dockerfile
-    ports:
-      - "4200:4200"
     volumes:
       - "./templates/my-app:/templates/my-app"
+    ports:
+      - "4200:4200"
+    depends_on:
+      - app
     # tty: true
     # restart: always
     # networks:

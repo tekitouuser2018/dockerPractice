@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"regexp"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -38,10 +39,36 @@ type User struct {
 // 	t.templ.Execute(w, nil)
 // }
 
+var reg = regexp.MustCompile("http?:\\/\\/(.+).*")
+
 func main() {
 
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
+		// if c.Request.Method == "OPTIONS" {
+		// 	// for preflight
+		// 	origin := c.Request.Header.Get("Origin")
+
+		// 	r := reg.Copy()
+		// 	if r.MatchString(origin) {
+		// 		headers := c.Request.Header.Get("Access-Control-Request-Headers")
+
+		// 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		// 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE")
+		// 		c.Writer.Header().Set("Access-Control-Allow-Headers", headers)
+
+		// 		c.Data(200, "text/plain", []byte{})
+		// 		c.Abort()
+		// 	} else {
+		// 		c.Data(403, "text/plain", []byte{})
+		// 		c.Abort()
+		// 	}
+		// } else {
+		// 	// for actual response
+		// 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		// 	//c.Writer.Header().Set("Access-Control-Expose-Headers", "")
+		// 	c.Next()
+		// }
 		c.JSON(200, gin.H{
 			"Test Connection": "正常レスポンス",
 		})
@@ -59,6 +86,31 @@ func main() {
 }
 
 func getUsers(c *gin.Context) {
+	// if c.Request.Method == "OPTIONS" {
+	// 	// for preflight
+	// 	origin := c.Request.Header.Get("Origin")
+
+	// 	r := reg.Copy()
+	// 	if r.MatchString(origin) {
+	// 		headers := c.Request.Header.Get("Access-Control-Request-Headers")
+
+	// 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	// 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE")
+	// 		c.Writer.Header().Set("Access-Control-Allow-Headers", headers)
+
+	// 		c.Data(200, "text/plain", []byte{})
+	// 		c.Abort()
+	// 	} else {
+	// 		c.Data(403, "text/plain", []byte{})
+	// 		c.Abort()
+	// 	}
+	// } else {
+	// 	// for actual response
+	// 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	// 	//c.Writer.Header().Set("Access-Control-Expose-Headers", "")
+	// 	c.Next()
+	// }
+
 	var err error = nil
 	var response []User
 	defer func() {

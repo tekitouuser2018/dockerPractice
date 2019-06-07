@@ -1,5 +1,7 @@
 FROM golang:latest
 
+EXPOSE 8080
+
 WORKDIR $HOME/go
 # ADD . $HOME/go
 
