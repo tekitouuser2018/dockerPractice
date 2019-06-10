@@ -127,7 +127,7 @@ func getUsers(c *gin.Context) {
 			})
 		} else {
 			c.JSON(200, gin.H{
-				"Test Get Table Data": response,
+				"TableResponse": response,
 			})
 		}
 	}()

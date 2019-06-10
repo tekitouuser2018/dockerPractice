@@ -14,7 +14,7 @@ export class AppComponent {
 
   // @Input() usersService: UsersService
   // response$ : Observable<User[]>;
-  response$ : User[];
+  response : User[];
   // ngOnInit(){
   //   this.response$ = this.usersService.getUsers();
   // }
@@ -38,11 +38,19 @@ export class AppComponent {
   ];
 
   onSubmit (){
+    // this.response =[
+    //   {id:1,name:'firstBrits',created_time:'2019/06/10',updated_time:'2019/06/10'},
+    //   {id:2,name:'econdMan',created_time:'2019/06/10',updated_time:'2019/06/10'},
+    //   {id:3,name:'3rd',created_time:'2019/06/10',updated_time:'2019/06/10'},
+    // ];
     this.usersService.getUsers()
     .subscribe(
       (res) => { 
-        this.response$ = res;
-        console.log(this.response$);
+        this.response = res["TableResponse"];
+        console.log(res);
+        // console.log(res["TableResponse"]);
+        // console.log(this.response[0]);
+        // console.log(this.response[1]);
         alert('fetched data');
       },
       error =>{
@@ -51,16 +59,7 @@ export class AppComponent {
       }
       
     );
-    // this.response$.subscribe(
-    //   res =>{
-    //     alert('fetched data');
-    //   },
-    //   error =>{
-    //     alert('feiled fetching data');
-    //     console.log('error: ', error);
-    //   }
-      
-    // );
+
 
    }
 
