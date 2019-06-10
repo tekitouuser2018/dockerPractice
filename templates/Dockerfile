@@ -1,4 +1,4 @@
-FROM node:10.9.0-stretch
+FROM node:10.16.0-alpine
 
 # EXPOSE 4200
 

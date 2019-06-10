@@ -30,7 +30,7 @@ services:
     #   - web:
 # reverse-proxy
   proxy:
-    image: nginx:latest
+    image: nginx:1.17.0-alpine
     volumes:
       - ./myproxy/conf/proxy.conf:/etc/nginx/conf.d/proxy.conf
       # - ./templates:/var/www/templates
@@ -45,7 +45,7 @@ services:
     build: .
     container_name: goApp
     volumes:
-      - .:/go
+      - ./go:/go
     depends_on:
         - mysql
     ports:

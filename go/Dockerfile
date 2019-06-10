@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:1.11.10-alpine
 
 EXPOSE 8080
 
