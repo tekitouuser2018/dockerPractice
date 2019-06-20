@@ -37,7 +37,7 @@ jobs:
           command: |
             pwd
             ls
-            docker --version
+            # docker --version
             docker-compose build
 
       - run:
