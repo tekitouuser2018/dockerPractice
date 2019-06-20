@@ -12,7 +12,8 @@ jobs:
             set -x
             VER="17.03.0-ce"
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tg
+            mkdir -p /usr/bi
             mv /tmp/docker/* /usr/bi
 
       - run:
@@ -20,6 +21,7 @@ jobs:
           command: |
             curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
+            mkdir -p /usr/local/bin/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
       - run:
