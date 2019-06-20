@@ -11,9 +11,12 @@ jobs:
           name: prepare
           command: |
             apt-get update
+            # sudo apt install apt-transport-https ca-certificates curl software-properties-common
             apt-get install -y sudo
             sudo apt-get install -y python-pip
             apt-get install -y curl
+            sudo apt install -y docker-ce
+            sudo pip install -U docker-compose
             # vi ~/.bash_profile
             # PATH=$PATH:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin
 
@@ -33,7 +36,6 @@ jobs:
           command: |
             curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
-            sudo pip install -U docker-compose
             # mkdir -p /usr/local/bin/docker-compose
             # sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
