@@ -59,7 +59,8 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            sudo usermod -aG docker user
+            sudo usermod -aG docker $USER
+            sudo service docker start
             sudo service docker status
             docker ps
             sudo apt-get remove docker docker-engine
