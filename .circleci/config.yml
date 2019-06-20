@@ -9,7 +9,8 @@ jobs:
 
       - run:
           name: prepare
-          command:
+          command: |
+            apt-get update
             apt-get -y install curl
 
       # - run:
