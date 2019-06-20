@@ -2,9 +2,9 @@ version: 2
 
 jobs:
   build:
-    docker:
-      #- image: circleci/ubuntu:16.04
-      - image: buildpack-deps:trusty
+    machine: true
+      # - image: circleci/ubuntu:16.04
+      # - image: buildpack-deps:trusty
       # image: circleci/classic:201708-01
     steps:
       - checkout
