@@ -63,7 +63,7 @@ jobs:
             # sudo service docker start
             sudo service docker status
             docker ps
-            sudo apt-get remove docker docker-engine
-            curl -sSL https://get.docker.com/ | sh
-            sudo service docker start && docker-compose up -d
+            # sudo apt-get remove docker docker-engine
+            # curl -sSL https://get.docker.com/ | sh
+            docker-compose up -d
             # sudo docker-compose up -d
