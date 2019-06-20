@@ -53,7 +53,7 @@ jobs:
             ls
             docker --version
             docker-compose --version
-            # sudo docker-compose build
+            sudo docker-compose build
 
       - run:
           name: Start container and verify it's working
