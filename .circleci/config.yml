@@ -52,7 +52,8 @@ jobs:
             pwd
             ls
             docker --version
-            sudo docker-compose build
+            docker-compose --version
+            # sudo docker-compose build
 
       - run:
           name: Start container and verify it's working
