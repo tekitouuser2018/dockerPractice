@@ -7,6 +7,11 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: prepare
+          command:
+            apt-get -y install curl
+
       # - run:
       #     name: Install Docker client
       #     command: |
