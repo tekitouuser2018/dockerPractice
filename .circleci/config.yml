@@ -6,16 +6,16 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Install Docker client
-          command: |
-            set -x
-            VER="17.03.0-ce"
-            curl -fsSL https://get.docker.com/ | sh
+      # - run:
+      #     name: Install Docker client
+      #     command: |
+      #       set -x
+      #       VER="17.03.0-ce"
+      #       curl -fsSL https://get.docker.com/ | sh
             # curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             # tar -xz -C /tmp -f /tmp/docker-$VER.tg
-            mkdir -p /usr/bi
-            mv /tmp/docker/* /usr/bi
+            # mkdir -p /usr/bi
+            # mv /tmp/docker/* /usr/bi
 
       - run:
           name: Install Docker Compose
