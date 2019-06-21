@@ -1,4 +1,4 @@
-FROM node:10.16.0-alpine
+FROM node:10.16.0-alpine AS build
 
 # EXPOSE 4200
 
@@ -26,8 +26,7 @@ ARG configuration=production
 # RUN ng build
 RUN npm run build -- --output-path=./dist/out --configuration $configuration
 # RUN ng serve --host 0.0.0.0
-# RUN npm run build --prod
 
-# FROM nginx:1.17.0-alpine
-# COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
-# COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
+FROM nginx:1.17.0-alpine
+COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
+COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
