@@ -1,5 +1,5 @@
 # どのイメージを基にするか
-FROM ubuntu
+FROM ubuntu:18.04
 # 作成したユーザの情報
 LABEL maintainer="Admin <admin@admin.com>"
 # RUN: docker buildするときに実行される
