@@ -14,6 +14,15 @@ jobs:
           command: |
             # apt-get update
             sudo apt-get install git
+            export GOROOT=/usr/local/go
+            export GOPATH=$HOME/go
+            export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+            # export GOPATH=$HOME/go
+            # export PATH=$PATH:$GOPATH/bin
+            # echo 'export PATH="$GOPATH/bin:$PATH"' >> $BASH_ENV
+            source ~/.profile
+            echo $HOME
+            echo $GOPATH
             # apt-get install -y sudo
             # sudo apt-get install -y python-pip
             # apt-get install -y curl
