@@ -9,13 +9,14 @@ jobs:
     steps:
       - checkout
 
-      # - run:
-      #     name: prepare
-      #     command: |
-      #       apt-get update
-      #       apt-get install -y sudo
-      #       sudo apt-get install -y python-pip
-      #       apt-get install -y curl
+      - run:
+          name: prepare
+          command: |
+            apt-get update
+            sudo apt-get install git
+            # apt-get install -y sudo
+            # sudo apt-get install -y python-pip
+            # apt-get install -y curl
       #       sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
       #       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
       #       sudo apt-key fingerprint 0EBFCD88
