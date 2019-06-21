@@ -25,8 +25,7 @@ ARG configuration=production
 
 # RUN ng build
 RUN npm run build -- --output-path=./dist/out --configuration $configuration
-RUN ng serve --host 0.0.0.0
-# RUN ng serve --host=0.0.0.0
+# RUN ng serve --host 0.0.0.0
 # RUN npm run build --prod
 
 FROM nginx:latest

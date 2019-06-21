@@ -13,8 +13,6 @@ ENV GOPATH $HOME/go
 
 RUN echo $PATH
 RUN apk update && apk add git && go get gopkg.in/natefinch/lumberjack.v2
-# RUN git --version
-# RUN git clone https://github.com/git/git
 RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/gin-gonic/gin
 RUN go get gopkg.in/gorp.v1

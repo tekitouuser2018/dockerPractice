@@ -85,5 +85,6 @@ jobs:
             docker ps
             # sudo apt-get remove docker docker-engine
             # curl -sSL https://get.docker.com/ | sh
-            docker-compose up -d
+            # docker-compose up -d
+            docker-compose build
             # sudo docker-compose up -d
