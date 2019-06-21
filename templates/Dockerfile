@@ -28,7 +28,7 @@ RUN npm run build -- --output-path=./dist/out --configuration $configuration
 # RUN ng serve --host 0.0.0.0
 # RUN npm run build --prod
 
-FROM nginx:latest
+FROM nginx:1.17.0-alpine
 COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
 # Copy the default nginx.conf provided by tiangolo/node-frontend
 COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
