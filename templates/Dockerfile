@@ -28,5 +28,7 @@ RUN npm run build -- --output-path=./dist/out --configuration $configuration
 # RUN ng serve --host 0.0.0.0
 
 FROM nginx:1.17.0-alpine
-COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
-COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
+# COPY --from=build-stage /my-app/dist/out/ /usr/share/nginx/html
+# COPY --from=build-stage ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /my-app/dist/out/ /usr/share/nginx/html
+COPY --from=build ../myproxy/conf/proxy.conf /etc/nginx/conf.d/default.conf
