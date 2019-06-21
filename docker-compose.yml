@@ -43,7 +43,7 @@ services:
       - "6969:6969"
   app:
     # build: .
-    image: 1.11-alpine
+    image: go:1.11-alpine
     container_name: goApp
     volumes:
       - ./go:/go
