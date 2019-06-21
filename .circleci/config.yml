@@ -13,6 +13,7 @@ jobs:
           name: prepare
           command: |
             # apt-get update
+            cd $HOME
             sudo apt-get install git
             export GOROOT=/usr/local/go
             export GOPATH=$HOME/go
