@@ -24,7 +24,6 @@ jobs:
             echo $HOME
             echo $GOPATH
             git --version
-            git config --list
             # apt-get install -y sudo
             # sudo apt-get install -y python-pip
             # apt-get install -y curl
