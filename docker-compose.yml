@@ -42,7 +42,8 @@ services:
     ports:
       - "6969:6969"
   app:
-    build: .
+    # build: .
+    image: 1.11-alpine
     container_name: goApp
     volumes:
       - ./go:/go
