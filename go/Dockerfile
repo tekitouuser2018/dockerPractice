@@ -11,6 +11,7 @@ ENV HOME /root
 ENV PATH $PATH:/usr/local/go/bin
 ENV GOPATH $HOME/go
 
+RUN echo $PATH
 RUN git --version
 # RUN git clone https://github.com/git/git
 RUN go get -u github.com/go-sql-driver/mysql

@@ -20,12 +20,12 @@ jobs:
             # export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
             # export PATH=$PATH:/usr/local/bin
             # export PATH=$PATH:/usr/bin
-            echo 'export GOROOT="/usr/local/go"' >> $BASH_ENV
-            echo 'export GOPATH="$HOME/go"' >> $BASH_ENV
-            echo 'export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' >> $BASH_ENV
-            echo 'export PATH="$PATH:/usr/local/bin"' >> $BASH_ENV
-            echo 'export PATH="$PATH:/usr/bin"' >> $BASH_ENV
-            source $BASH_ENV
+            # echo 'export GOROOT="/usr/local/go"' >> $BASH_ENV
+            # echo 'export GOPATH="$HOME/go"' >> $BASH_ENV
+            # echo 'export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' >> $BASH_ENV
+            # echo 'export PATH="$PATH:/usr/local/bin"' >> $BASH_ENV
+            # echo 'export PATH="$PATH:/usr/bin"' >> $BASH_ENV
+            # source $BASH_ENV
             which git
             # export GOPATH=$HOME/go
             # export PATH=$PATH:$GOPATH/bin
