@@ -17,7 +17,7 @@ RUN npm install --save @angular/platform-browser
 RUN npm install --save @angular/material @angular/cdk
 RUN npm install --save @angular/animations
 RUN npm i --save @angular/http @angular/common
-RUN npm -i --save @angular/forms
+RUN npm i --save @angular/forms
 # RUN npm install -g @angular/cli && ng config -g cli.packageManager yarn
 # RUN npm install -g angular-cli
 COPY ./my-app/ $HOME/templates/my-app/
