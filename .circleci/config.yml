@@ -18,6 +18,8 @@ jobs:
             export GOROOT=/usr/local/go
             export GOPATH=$HOME/go
             export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+            export PATH=$PATH:/usr/local/bin
+            which git
             # export GOPATH=$HOME/go
             # export PATH=$PATH:$GOPATH/bin
             # echo 'export PATH="$GOPATH/bin:$PATH"' >> $BASH_ENV
