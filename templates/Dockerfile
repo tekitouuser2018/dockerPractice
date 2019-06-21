@@ -26,8 +26,8 @@ ARG configuration=production
 # RUN ng build
 RUN npm run build -- --output-path=./dist/out --configuration $configuration
 # RUN ng serve --host 0.0.0.0
-RUN ls ./my-app
-RUN ls ./my-app/dist
+RUN ls 
+# RUN ls ./my-app/dist
 # RUN ls ./my-app/dist/out
 
 
